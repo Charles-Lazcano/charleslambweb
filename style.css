@@ -437,6 +437,13 @@ a { color: inherit; }
 
 .footer-inner a:hover { text-decoration: underline; }
 
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 /* Responsive */
 @media (max-width: 860px) {
   .hero-inner { flex-direction: column; }
