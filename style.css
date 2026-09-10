@@ -343,7 +343,8 @@ a { color: inherit; }
 }
 
 .pricing-cards {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
   align-items: stretch;
 }
 
