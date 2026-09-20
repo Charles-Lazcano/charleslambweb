@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 100'%3E%3Crect x='30' y='70' width='8' height='18' rx='4' fill='%231e5a8a'/%3E%3Crect x='46' y='74' width='8' height='18' rx='4' fill='%231e5a8a'/%3E%3Crect x='64' y='74' width='8' height='18' rx='4' fill='%231e5a8a'/%3E%3Crect x='80' y='70' width='8' height='18' rx='4' fill='%231e5a8a'/%3E%3Ccircle cx='22' cy='55' r='8' fill='%23bfe1f5' stroke='%232f80c4' stroke-width='2.5'/%3E%3Cg fill='%23bfe1f5' stroke='%232f80c4' stroke-width='2.5'%3E%3Ccircle cx='40' cy='50' r='17'/%3E%3Ccircle cx='58' cy='42' r='19'/%3E%3Ccircle cx='76' cy='50' r='16'/%3E%3Ccircle cx='48' cy='60' r='16'/%3E%3Ccircle cx='66' cy='60' r='15'/%3E%3C/g%3E%3Ccircle cx='93' cy='48' r='14' fill='%232f80c4'/%3E%3Cellipse cx='96' cy='35' rx='5' ry='8' fill='%232f80c4' transform='rotate(-20 96 35)'/%3E%3Ccircle cx='97' cy='46' r='2.2' fill='%23ffffff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -209,11 +209,12 @@
     </div>
   </section>
 
-  <section id="about" class="section about">
-    <div class="container about-grid">
-      <div class="about-card" aria-hidden="true">
-        <div class="about-glow"></div>
-        <svg viewBox="0 0 120 100" class="about-lamb">
+  <section id="about" class="ab" aria-labelledby="about-title">
+    <div class="ab-inner">
+      <p class="tag">About</p>
+
+      <div class="story">
+        <svg class="mark" viewBox="0 0 120 100" aria-hidden="true">
           <rect x="30" y="70" width="8" height="18" rx="4" fill="#1e5a8a"/>
           <rect x="46" y="74" width="8" height="18" rx="4" fill="#1e5a8a"/>
           <rect x="64" y="74" width="8" height="18" rx="4" fill="#1e5a8a"/>
@@ -230,33 +231,40 @@
           <ellipse cx="96" cy="35" rx="5" ry="8" fill="#2f80c4" transform="rotate(-20 96 35)"/>
           <circle cx="97" cy="46" r="2.2" fill="#ffffff"/>
         </svg>
-        <span class="about-chip chip-top"><i></i>Missed call &middot; texted back</span>
-        <span class="about-chip chip-bottom"><i></i>New quote &middot; replied in seconds</span>
-      </div>
 
-      <div class="about-body">
-        <p class="eyebrow">About</p>
-        <h2 class="about-title">Websites that work<br>even when you can&rsquo;t.</h2>
-        <p class="about-lede">
-          I'm Charles Lamb. I design and build custom websites for businesses and individuals,
-          then back them with AI automation &mdash; so a missed call or a new quote request never
-          goes unanswered, even when you're busy or off the clock.
-        </p>
-        <p class="about-copy">
-          The goal is simple: you get a site that looks professional, works reliably, and
-          actively captures every lead that comes your way &mdash; without you having to manage
-          any of it. That's my job.
-        </p>
+        <h2 id="about-title">Websites that keep working when you can't.</h2>
 
-        <ul class="about-points">
-          <li><span>Custom-built</span>Designed around your brand, never a template</li>
-          <li><span>Always-on replies</span>Every call and quote gets a reply</li>
-          <li><span>Fully managed</span>Hosting, updates and support handled</li>
+        <p class="lede">I'm <strong>Charles Lamb</strong>. I design and build custom websites for local businesses, then back them with AI automation — so a missed call or a new quote request never goes unanswered, even when you're busy or off the clock.</p>
+
+        <p class="body-copy">The goal is simple: a site that looks sharp, runs reliably, and captures every lead that comes your way — without you having to manage a thing.</p>
+
+        <ul class="props">
+          <li>
+            <span class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </span>
+            <b>Custom-built</b>
+            <span>Designed around your brand from scratch — never a template.</span>
+          </li>
+          <li>
+            <span class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+            </span>
+            <b>Always-on replies</b>
+            <span>Every missed call and quote request gets an instant answer.</span>
+          </li>
+          <li>
+            <span class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <b>Fully managed</b>
+            <span>Hosting, updates, and support all handled — that's my job.</span>
+          </li>
         </ul>
 
-        <div class="about-actions">
-          <a href="#pricing" class="btn btn-primary">Get Started</a>
-          <a href="#custom" class="btn btn-ghost">Custom Projects</a>
+        <div class="cta">
+          <a class="btn btn-primary" href="#pricing">Get started</a>
+          <a class="btn btn-ghost" href="#custom">Custom projects</a>
         </div>
       </div>
     </div>
