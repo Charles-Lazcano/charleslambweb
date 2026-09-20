@@ -619,3 +619,43 @@ a { color: inherit; }
 .rv .panel li { display: flex; gap: 11px; align-items: flex-start; font-size: .94rem; color: #dbe8f7; }
 .rv .check { flex: none; width: 20px; height: 20px; margin-top: 1px; border-radius: 50%; background: var(--ok); display: flex; align-items: center; justify-content: center; }
 .rv .check svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 3; fill: none; }
+
+/* ---------- Custom builds / request a quote ---------- */
+.custom-build {
+  background: linear-gradient(180deg, var(--blue-900) 0%, #0f2a40 100%);
+}
+
+.custom-build .eyebrow {
+  text-align: center;
+  color: var(--blue-400);
+  margin-bottom: 12px;
+}
+
+.custom-build .section-title { color: var(--white); }
+.custom-build .section-sub { color: var(--blue-200); }
+
+.custom-build .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+.custom-build .card h3 { color: var(--white); }
+.custom-build .card p,
+.custom-build .check-list li { color: var(--blue-100); }
+
+.custom-build .check-list li::before {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--blue-400);
+}
+
+.quote-cta {
+  text-align: center;
+  margin-top: 44px;
+}
+
+.quote-cta p {
+  color: var(--blue-200);
+  margin: 16px 0 0;
+  font-size: 0.95rem;
+}
