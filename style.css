@@ -393,27 +393,6 @@ a { color: inherit; }
   margin: 0;
 }
 
-/* About */
-.about-inner {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-}
-
-.about-art { flex: 0 0 260px; display: flex; justify-content: center; }
-.about-lamb { width: 100%; max-width: 220px; }
-.about-text { flex: 1; }
-.about-text .section-title { text-align: left; }
-.about-text p { color: var(--text-soft); }
-
-/* Contact */
-.contact {
-  text-align: center;
-  background: linear-gradient(180deg, var(--white) 0%, var(--blue-50) 100%);
-}
-
-.contact-inner { max-width: 620px; }
-
 /* Footer */
 .site-footer {
   background: var(--blue-900);
@@ -449,9 +428,6 @@ a { color: inherit; }
 @media (max-width: 860px) {
   .hero-inner { flex-direction: column; }
   .hero-art { order: -1; max-width: 260px; }
-  .about-inner { flex-direction: column; text-align: center; }
-  .about-text .section-title { text-align: center; }
-  .about-art { flex: 0 0 auto; }
   .cards, .steps, .pricing-cards { grid-template-columns: 1fr; }
   .price-card.featured { transform: none; }
   .build-quote { flex-direction: column; text-align: center; }
@@ -658,4 +634,149 @@ a { color: inherit; }
   color: var(--blue-200);
   margin: 16px 0 0;
   font-size: 0.95rem;
+}
+
+/* ---------- About ---------- */
+.about {
+  background:
+    radial-gradient(90% 70% at 0% 0%, var(--blue-100) 0%, rgba(217, 237, 250, 0) 60%),
+    linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+  overflow: hidden;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(36px, 6vw, 84px);
+  align-items: center;
+}
+
+.about-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 32px;
+  background: linear-gradient(155deg, var(--white) 0%, var(--blue-100) 100%);
+  border: 1px solid var(--blue-200);
+  box-shadow: 0 30px 60px -28px rgba(22, 58, 86, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-card::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 22px;
+  border: 1.5px dashed var(--blue-200);
+}
+
+.about-glow {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47, 128, 196, 0.22) 0%, rgba(47, 128, 196, 0) 70%);
+}
+
+.about-lamb {
+  position: relative;
+  width: 72%;
+  filter: drop-shadow(0 14px 18px rgba(22, 58, 86, 0.18));
+}
+
+.about-chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  color: var(--blue-900);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--blue-100);
+  box-shadow: 0 12px 24px -12px rgba(22, 58, 86, 0.45);
+  white-space: nowrap;
+}
+
+.about-chip i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1fa971;
+  box-shadow: 0 0 0 4px rgba(31, 169, 113, 0.18);
+}
+
+.chip-top { top: 9%; right: -6%; }
+.chip-bottom { bottom: 9%; left: -6%; }
+
+.about-body .eyebrow { margin-bottom: 12px; }
+
+.about-title {
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  line-height: 1.12;
+  margin-bottom: 22px;
+}
+
+.about-lede {
+  font-size: 1.15rem;
+  color: var(--blue-900);
+  line-height: 1.6;
+  padding-left: 18px;
+  border-left: 3px solid var(--blue-600);
+}
+
+.about-copy {
+  color: var(--text-soft);
+  font-size: 1.02rem;
+}
+
+.about-points {
+  list-style: none;
+  margin: 26px 0 30px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.about-points li {
+  background: var(--white);
+  border: 1px solid var(--blue-100);
+  border-radius: 14px;
+  padding: 16px 16px 18px;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--text-soft);
+  box-shadow: var(--shadow);
+}
+
+.about-points li span {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--blue-900);
+  margin-bottom: 4px;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-card { max-width: 320px; }
+  .chip-top { right: -2%; }
+  .chip-bottom { left: -2%; }
+}
+
+@media (max-width: 620px) {
+  .about-points { grid-template-columns: 1fr; }
 }
