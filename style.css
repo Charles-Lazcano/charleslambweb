@@ -814,3 +814,12 @@ a { color: inherit; }
 @media (max-width: 480px) {
   .nav-manage .long { display: none; }
 }
+
+/* Larger brand (logo + name) on laptop/desktop only; mobile keeps the compact header */
+@media (min-width: 861px) {
+  .header-inner { padding-top: 16px; padding-bottom: 16px; }
+  .brand { gap: 14px; }
+  .brand-mark { width: 64px; height: 54px; }
+  .brand-name { font-size: 1.85rem; letter-spacing: -0.01em; }
+  .nav-manage { padding: 10px 20px; font-size: 0.95rem; }
+}
