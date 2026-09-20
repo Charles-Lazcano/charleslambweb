@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
 }
 
 body {
@@ -290,35 +291,6 @@ a { color: inherit; }
   box-shadow: inset 0 0 0 2px var(--blue-600);
 }
 
-/* Process steps */
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-}
-
-.step {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 30px 26px;
-  box-shadow: var(--shadow);
-}
-
-.step-num {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--blue-600);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-.step p { color: var(--text-soft); margin-bottom: 0; }
-
 /* Pricing */
 .build-quote {
   display: flex;
@@ -428,7 +400,7 @@ a { color: inherit; }
 @media (max-width: 860px) {
   .hero-inner { flex-direction: column; }
   .hero-art { order: -1; max-width: 260px; }
-  .cards, .steps, .pricing-cards { grid-template-columns: 1fr; }
+  .cards, .pricing-cards { grid-template-columns: 1fr; }
   .price-card.featured { transform: none; }
   .build-quote { flex-direction: column; text-align: center; }
 }
@@ -779,4 +751,19 @@ a { color: inherit; }
 
 @media (max-width: 620px) {
   .about-points { grid-template-columns: 1fr; }
+}
+
+/* Manage Subscription (Stripe customer portal) */
+.nav-manage {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: var(--blue-700);
+  border-color: var(--blue-200);
+  white-space: nowrap;
+}
+
+.nav-manage:hover { border-color: var(--blue-600); background: var(--blue-50); }
+
+@media (max-width: 480px) {
+  .nav-manage .long { display: none; }
 }
