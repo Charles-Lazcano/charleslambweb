@@ -44,7 +44,17 @@
       </svg>
       <span class="brand-name">Charles Lamb <span>Web Agency</span></span>
     </div>
-    <a href="https://billing.stripe.com/p/login/5kQbIT5gYaEm4uaeQu0kE00" class="btn btn-ghost nav-manage" target="_blank" rel="noopener">Manage<span class="long"> Subscription</span></a>
+    <div class="header-actions">
+      <nav class="site-nav" id="siteNav" aria-label="Main">
+        <a href="#pricing">Price</a>
+        <a href="#custom">Custom</a>
+        <a href="#seo">SEO</a>
+      </nav>
+      <a href="https://billing.stripe.com/p/login/5kQbIT5gYaEm4uaeQu0kE00" class="btn btn-ghost nav-manage" target="_blank" rel="noopener">Manage<span class="long"> Subscription</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -326,6 +336,22 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu (three-line toggle)
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('siteNav');
+    if(!toggle || !nav) return;
+    function setOpen(open){
+      nav.classList.toggle('open', open);
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    toggle.addEventListener('click', function(){ setOpen(!nav.classList.contains('open')); });
+    nav.addEventListener('click', function(e){ if(e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+  })();
 
   // Looping "missed call text-back" chat demo; starts when the phone scrolls into view
   (function(){
