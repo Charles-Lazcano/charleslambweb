@@ -437,6 +437,7 @@ section[id] { scroll-margin-top: 90px; }
   }
   .site-nav.open { display: flex; }
   .site-nav a { padding: 10px 0; width: 100%; }
+  .site-nav a.nav-cta { width: auto; padding: 10px 18px; margin-top: 6px; }
   .nav-toggle { display: flex; }
   .header-actions { gap: 10px; }
 }
@@ -674,6 +675,44 @@ section[id] { scroll-margin-top: 90px; }
 
 .seo-cta { text-align: center; margin: 40px 0 0; }
 .seo-cta p { color: var(--text-soft); margin: 16px 0 0; font-size: 0.95rem; }
+
+/* ---------- Real examples ---------- */
+.examples { background: var(--white); }
+.examples .eyebrow { text-align: center; }
+
+.example-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 760px);
+  justify-content: center;
+  gap: 28px;
+}
+
+.example { margin: 0; }
+
+.example-shot {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--blue-100);
+  box-shadow: 0 18px 40px -18px rgba(22, 58, 86, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.example-shot:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -18px rgba(22, 58, 86, 0.45); }
+.example-shot img { display: block; width: 100%; height: auto; }
+
+.example figcaption { text-align: center; padding-top: 20px; }
+.example h3 { font-size: 1.3rem; margin: 0 0 4px; }
+.example p { color: var(--text-soft); margin: 0 0 10px; }
+.example-link {
+  font-weight: 600;
+  color: var(--blue-600);
+  text-decoration: none;
+}
+.example-link:hover { color: var(--blue-700); text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  .example-shot:hover { transform: none; }
+}
 
 /* ---------- About ---------- */
 .ab {
