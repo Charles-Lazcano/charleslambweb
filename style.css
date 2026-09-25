@@ -711,7 +711,38 @@ section[id] { scroll-margin-top: 90px; }
 .example-link:hover { color: var(--blue-700); text-decoration: underline; }
 
 @media (prefers-reduced-motion: reduce) {
+  .example-shot:hover, .example:hover { transform: none; }
+}
+
+/* Laptop/desktop: trim the screenshot's uneven right margin, rounder corners,
+   and overlay the caption centered along the bottom of the picture */
+@media (min-width: 861px) {
+  .example { position: relative; transition: transform 0.2s ease; }
+  .example-shot { border-radius: 24px; }
   .example-shot:hover { transform: none; }
+  .example-shot img {
+    aspect-ratio: 1233 / 774;
+    object-fit: cover;
+    object-position: left center;
+  }
+  .example figcaption {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    padding: 70px 24px 22px;
+    border-radius: 0 0 23px 23px;
+    background: linear-gradient(180deg, rgba(10, 18, 30, 0) 0%, rgba(10, 18, 30, 0.82) 55%, rgba(10, 18, 30, 0.92) 100%);
+    pointer-events: none;
+  }
+  .example figcaption a { pointer-events: auto; }
+  .example h3 { color: var(--white); }
+  .example p { color: #d6e2ee; }
+  .example-link { color: var(--blue-200); }
+  .example-link:hover { color: var(--white); }
+}
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  .example:hover { transform: translateY(-3px); }
 }
 
 /* ---------- About ---------- */
