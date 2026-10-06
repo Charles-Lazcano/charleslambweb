@@ -270,8 +270,10 @@
       <p class="eyebrow">Real Examples</p>
       <h2 class="section-title">Businesses we&rsquo;ve worked with</h2>
       <p class="section-sub">Live sites built for real local businesses &mdash; take a look.</p>
-      <div class="example-grid">
-        <figure class="example">
+      <div class="example-carousel" id="exampleCarousel" aria-roledescription="carousel" aria-label="Client websites">
+        <button type="button" class="carousel-btn carousel-prev" aria-label="Previous website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="example-track" tabindex="0">
+        <figure class="example" aria-roledescription="slide" aria-label="1 of 2">
           <a href="https://racetoration.com" target="_blank" rel="noopener" class="example-shot">
             <img src="images/racetoration.jpg" width="1358" height="774" loading="lazy" alt="Racetoration homepage: San Antonio performance and restoration shop">
           </a>
@@ -281,6 +283,19 @@
             <a href="https://racetoration.com" target="_blank" rel="noopener" class="example-link">racetoration.com &rarr;</a>
           </figcaption>
         </figure>
+        <figure class="example example--center" aria-roledescription="slide" aria-label="2 of 2">
+          <a href="https://lightinghousestore.com" target="_blank" rel="noopener" class="example-shot">
+            <img src="images/lighting-house-store.jpg" width="1358" height="774" loading="lazy" alt="Lighting House Store homepage: San Antonio LED lighting sales and installation">
+          </a>
+          <figcaption>
+            <h3>Lighting House Store</h3>
+            <p>LED lighting sales, service &amp; installation &middot; San Antonio, TX</p>
+            <a href="https://lightinghousestore.com" target="_blank" rel="noopener" class="example-link">lightinghousestore.com &rarr;</a>
+          </figcaption>
+        </figure>
+        </div>
+        <button type="button" class="carousel-btn carousel-next" aria-label="Next website"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="carousel-dots" role="group" aria-label="Choose a website"></div>
       </div>
     </div>
   </section>
@@ -372,6 +387,48 @@
     toggle.addEventListener('click', function(){ setOpen(!nav.classList.contains('open')); });
     nav.addEventListener('click', function(e){ if(e.target.closest('a')) setOpen(false); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+  })();
+
+  // "Businesses we've worked with" carousel: arrows and dots scroll the track one
+  // site at a time (wrapping at the ends); touch devices can also swipe it.
+  (function(){
+    var carousel = document.getElementById('exampleCarousel');
+    if(!carousel) return;
+    var track  = carousel.querySelector('.example-track');
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.example'));
+    var dotsEl = carousel.querySelector('.carousel-dots');
+    if(slides.length < 2){ carousel.classList.add('single'); return; }
+
+    var dots = slides.map(function(slide, i){
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', 'Show ' + slide.querySelector('h3').textContent);
+      dot.addEventListener('click', function(){ goTo(i); });
+      dotsEl.appendChild(dot);
+      return dot;
+    });
+
+    // Distance between slide starts (slide width + gap).
+    function step(){ return slides[1].offsetLeft - slides[0].offsetLeft; }
+    function current(){ return Math.round(track.scrollLeft / step()); }
+    function goTo(i){
+      var n = (i + slides.length) % slides.length;
+      track.scrollTo({ left: n * step(), behavior: 'smooth' });
+    }
+    function update(){
+      var c = current();
+      dots.forEach(function(d, i){ d.setAttribute('aria-current', i === c ? 'true' : 'false'); });
+    }
+
+    carousel.querySelector('.carousel-prev').addEventListener('click', function(){ goTo(current() - 1); });
+    carousel.querySelector('.carousel-next').addEventListener('click', function(){ goTo(current() + 1); });
+    track.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight'){ e.preventDefault(); goTo(current() + 1); }
+      if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(current() - 1); }
+    });
+    track.addEventListener('scroll', update, { passive: true });
+    update();
   })();
 
   // Looping "missed call text-back" chat demo; starts when the phone scrolls into view

@@ -680,14 +680,80 @@ section[id] { scroll-margin-top: 90px; }
 .examples { background: var(--white); }
 .examples .eyebrow { text-align: center; }
 
-.example-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 760px);
-  justify-content: center;
-  gap: 28px;
+/* Carousel: one site per slide. The track scroll-snaps so touch users can
+   swipe; the arrow buttons and dots scroll it from script. */
+.example-carousel {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.example-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* Bleed past the card on every side so its shadow and hover lift aren't
+     clipped by the scroll box; the gap keeps the next slide out of view. */
+  gap: 48px;
+  margin: 0 -40px;
+  padding: 6px 40px 28px;
+  scroll-padding-inline: 40px;
+}
+.example-track::-webkit-scrollbar { display: none; }
+.example-track:focus-visible { outline: 2px solid var(--blue-600); outline-offset: 4px; border-radius: 24px; }
+
+.example {
+  margin: 0;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
 }
 
-.example { margin: 0; }
+.carousel-btn {
+  position: absolute;
+  top: calc(50% - 32px);
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--blue-100);
+  background: var(--white);
+  color: var(--blue-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px -10px rgba(22, 58, 86, 0.45);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.carousel-btn svg { width: 22px; height: 22px; }
+.carousel-btn:hover, .carousel-btn:focus-visible { background: var(--blue-600); border-color: var(--blue-600); color: var(--white); }
+.carousel-prev { left: -72px; }
+.carousel-next { right: -72px; }
+
+.carousel-dots { display: flex; justify-content: center; gap: 10px; }
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 999px;
+  border: 0;
+  background: var(--blue-100);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+.carousel-dot[aria-current="true"] { width: 26px; background: var(--blue-600); }
+.example-carousel.single .carousel-btn, .example-carousel.single .carousel-dots { display: none; }
+
+/* Not enough room beside the card: tuck the arrows over its edges. */
+@media (max-width: 920px) {
+  /* match .container padding so the bleed never widens the page */
+  .example-track { margin: 0 -24px; padding: 6px 24px 28px; scroll-padding-inline: 24px; }
+  .carousel-btn { width: 40px; height: 40px; top: 30%; }
+  .carousel-prev { left: 8px; }
+  .carousel-next { right: 8px; }
+}
 
 .example-shot {
   display: block;
@@ -725,6 +791,7 @@ section[id] { scroll-margin-top: 90px; }
     object-fit: cover;
     object-position: left center;
   }
+  .example--center .example-shot img { object-position: center; }
   .example figcaption {
     position: absolute;
     left: 1px;
